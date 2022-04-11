@@ -1,1 +1,2 @@
-# EC530-project4
+### EC530-project4
+Speech to text and queue system
