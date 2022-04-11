@@ -27,6 +27,6 @@ def transcribe_queue(input_arr):
         p.close()
         p.join()
 
-    print(f"Time taken = {time.time() - start:.10f}")
+    print(f"Time taken = {time.time() - start}")
     return results
 
