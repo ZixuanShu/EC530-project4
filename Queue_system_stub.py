@@ -1,8 +1,8 @@
 import multiprocessing
 import time
 
-#set maximium processer number as 2, since my computer have a 12 cores cpu.
-PROCESSES = multiprocessing.cpu_count() - 10
+#set maximium processer number as 6, since my computer have a 12 cores cpu.
+PROCESSES = multiprocessing.cpu_count()/2
 
 def stubs(secs):
     time.sleep(secs)
