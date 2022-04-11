@@ -8,23 +8,19 @@ def stubs(secs):
     time.sleep(secs)
     return 0
 
-def stub_queue():
+def stub_queue(input_array):
     print(f"Running with {PROCESSES} processes!")
 
     start = time.time()
     with multiprocessing.Pool(PROCESSES) as p:
         p.map_async(
             stubs,
-            [
-                10,
-                8,
-                2,
-                6,
-                5,
-            ],
+            input_array,
         )
         # clean up
         p.close()
         p.join()
+    time_used = time.time() - start
+    print(f"Time taken = {time_used:.10f}")
+    return time_used 
 
-    print(f"Time taken = {time.time() - start:.10f}")

@@ -11,29 +11,35 @@ def transcribe(Filename):
     with harvard as source:
         audio = r.record(source)
     string = r.recognize_google(audio)
-    print(string)
     return string
 
-def transcribe_queue():
+def transcribe_queue(input_arr):
     print(f"Running with {PROCESSES} processes!")
 
     start = time.time()
+    results = []
     with multiprocessing.Pool(PROCESSES) as p:
-        p.map_async(
+        results = p.map_async(
             transcribe,
-            [
-                'Sample1.wav',
-                'Sample2.wav',
-                'Sample3.wav',
-                'Sample4.wav',
-                'Sample5.wav',
-                'Sample6.wav',
-            ],
-        )
+            input_arr,
+        ).get()
         # clean up
         p.close()
         p.join()
 
     print(f"Time taken = {time.time() - start:.10f}")
+    return results
 
-transcribe('Sample1.wav')
+if __name__ == '__main__': 
+
+    output = transcribe_queue([
+    'test_audios/Sample1.wav',
+    'test_audios/Sample2.wav',
+    'test_audios/Sample3.wav',
+    'test_audios/Sample4.wav',
+    'test_audios/Sample5.wav',
+    'test_audios/Sample6.wav',
+    ])
+
+    print(output)
+
