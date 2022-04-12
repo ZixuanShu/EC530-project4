@@ -1,6 +1,6 @@
 import Queue_system_stub
 
-expected_output = 30
+expected_output = 999
 
 test_input = [10,17,3,10,6,8,7,4,9]
 def test_stub():
