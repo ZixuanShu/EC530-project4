@@ -2,8 +2,8 @@ import multiprocessing
 import time
 import speech_recognition as sr
 
-#set maximium processer number as 6, since my computer have a 12 cores cpu.
-PROCESSES = multiprocessing.cpu_count()/2
+#set maximium processer number as 11, since my computer have a 12 cores cpu.
+PROCESSES = multiprocessing.cpu_count()-1
 
 def transcribe(Filename):
     r = sr.Recognizer()
